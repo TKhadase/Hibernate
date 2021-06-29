@@ -12,7 +12,7 @@ public class saveObject_loadObject {
 	public static void main(String[] args) {
 		boolean bTX = false;
 		Transaction tx = null;
-		Integer pid = 12;
+		Integer pid = 13;
 		Session ses = null;
 		SessionFactory factory = null;
 		System.out.println("main() started");
