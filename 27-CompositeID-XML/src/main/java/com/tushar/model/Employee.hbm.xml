@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.tushar.model.EmployeeDetails"  >
+		<composite-id name="eid"  class="com.tushar.model.EmployeeID">
+			<key-property name="id" />
+			<key-property name="projectName"/>
+		</composite-id>
+		<property name="ename" column="ENAME" />
+		<property name="salary" column="SALARY" />
+		<property name="desg" column="DESG" />
+		<property name="level" column="LEVEL" />
+	</class>
+</hibernate-mapping>
