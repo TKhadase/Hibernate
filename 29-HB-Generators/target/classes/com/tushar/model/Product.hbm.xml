@@ -5,11 +5,26 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.tushar.model.Product" table="Product" >
+	<class name="com.tushar.model.Product" table="Product">
 		<id name="PID" column="PID">
-		<!-- 	<generator class="assigned"></generator> -->
-		<!-- <generator class="increment"></generator> -->
-		<!-- 	 <generator class="identity"></generator>  -->
+			<!-- <generator class="assigned"></generator> -->
+			<!-- <generator class="increment"></generator> -->
+			<!-- <generator class="identity"></generator> -->
+
+			<!-- <generator class="sequence">
+				<param name="sequence_name">PROD_ID_SEQ</param>
+				<param name="initial_value">41</param>
+				<param name="increment_size">1</param>
+			</generator> -->
+		
+		
+			 <!--  HILO generator runs upto HIbernate4.x --> 
+		 	<!--  <generator class="hilo">
+				<param name="table">PROD_ID_HILO</param>
+				<param name="column">HI_VAL</param>
+				<param name="max_lo">2</param>
+			</generator> -->
+
 		</id>
 		<property name="prodname" column="PNAME" />
 		<property name="price" column="PRICE" />
