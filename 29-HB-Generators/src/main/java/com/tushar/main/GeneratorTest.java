@@ -1,5 +1,7 @@
 package com.tushar.main;
 
+import java.util.Random;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -24,13 +26,16 @@ public class GeneratorTest{
 			Product p1 = new Product();
 			//p1.setPID(14); //when asssigned Generator cfg <generator class="assigned"></generator> is used.
 			
+			
 			/*for <generator class="increment"></generator>
 			 *  no need to specify id Val. Suitable for MultiThreaded env. but not for Clustered env
 			 */
 			
+			
 			/*for <generator class="identity"></generator>
 			 *  no need to specify id Val. Suitable for MultiThreaded env.  &  Clustered env also
 			 */
+			
 			
 			/*for <generator class="sequence">
 						<param name="sequence_name">PROD_ID_SEQ</param>
@@ -60,14 +65,69 @@ public class GeneratorTest{
 			 *  no need to specify id Val. Suitable for MultiThreaded env.  &  Clustered env also
 			 */
 			
+			
+			/*
+			 * SEQHILO generator uses sequence interally as source of HI_VAL
+			 * Works with sequence supported DB like Oracle...not MySQL
+			 <generator class="seqhilo">
+				<param name="sequence">PROD_ID_SEQHILO</param>
+				<param name="max_lo">2</param>
+			</generator>
+			 *  no need to specify id Val... Suitable for MultiThreaded env.  &  Clustered env also
+			 */
+			
+			
+			/*
+			<generator class="native"/>
+			Suitable for MultiThreaded env.  &  Clustered env also
+			This generator picks up behavior based on underlying DB s/f capability
+			like for ORACLE :: sequence generator
+			for MySQL :: identity generator
+			for other that doesnt support sequence& identity generator:: hilo generator will be picked
+			 */
+			
+			
+			/*
+			 * <generator class="uuid"/> 
+			 * Generates 32 bit hex decimal number
+			 * Suitable for MultiThreaded env.  &  Clustered env also
+			*/
+			
+			
+			/*
+			 * <generator class="guid"/> 
+			 * Suitable for MultiThreaded env.  &  Clustered env also
+			 * in MySQL uses select   uuid()
+			 * in ORACLE  uses select  rawtohex(sys_guid())  from  dual
+			*/
+			
+			/*
+			 * <generator class="select"> 
+			 * <param name="key">prodname</param>  //here prodname must have unique constaraint
+			 * </generator>
+			 * <property name="prodname" column="PNAME"  unique-key="true" />
+			 * 
+							create or replace trigger PROD_ID_TRGR
+							BEFORE INSERT ON PRODUCT FOR EACH ROW
+							DECLARE
+							prod_no number(4);
+							BEGIN
+							SELECT PROD_ID_SEQ.NEXTVAL INTO prod_no FROM DUAL;
+							:new.PID := prod_no;
+							END;
+							/
+			 */
+
 			p1.setPrice(5244.0);
-			p1.setProdname("Screw box");
+			p1.setProdname("Screw box"+ new Random().nextInt());
 			p1.setQty(2);
 			p1.setStatus("A");
 		
 			tX = ses.beginTransaction();//start Transaction
 			
-			int id =(int) ses.save(p1); // given SQL instruction
+			//int id =(int) ses.save(p1); // given SQL instruction
+			
+			String id =(String) ses.save(p1); //use this for  uuid & guid generator & for custom generato
 			
 			tX.commit();//commit SQL instruction
 			System.out.println("Record inserted with ID::"+id);

@@ -5,28 +5,46 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.tushar.model.Product" table="Product">
+	<class name="com.tushar.model.Product" table="UID_PRODUCT_TEST">
 		<id name="PID" column="PID">
 			<!-- <generator class="assigned"></generator> -->
+
 			<!-- <generator class="increment"></generator> -->
+
 			<!-- <generator class="identity"></generator> -->
 
-			<!-- <generator class="sequence">
-				<param name="sequence_name">PROD_ID_SEQ</param>
-				<param name="initial_value">41</param>
-				<param name="increment_size">1</param>
-			</generator> -->
-		
-		
-			 <!--  HILO generator runs upto HIbernate4.x --> 
-		 	<!--  <generator class="hilo">
-				<param name="table">PROD_ID_HILO</param>
-				<param name="column">HI_VAL</param>
-				<param name="max_lo">2</param>
-			</generator> -->
+			<generator class="sequence"> 
+						<param name="sequence_name">PROD_ID_SEQ</param> 
+						<param name="initial_value">41</param> 
+						<param name="increment_size">1</param> 
+				</generator>
 
+			<!-- HILO generator runs upto HIbernate4.x -->
+			<!-- <generator class="hilo"> 
+						<param name="table">PROD_ID_HILO</param> 
+						<param name="column">HI_VAL</param> 
+						<param name="max_lo">2</param>
+			 </generator> -->
+
+			<!-- <generator class="seqhilo"> 
+						<param name="sequence">PROD_ID_SEQHILO</param> 
+						<param name="max_lo">2</param> 
+				</generator> -->
+
+		<!-- 	<generator class="native"/> -->
+		
+		<!--use Table  "UID_PRODUCT_TEST" for UUID, GUID generator test -->
+		<!-- <generator class="uuid"/> -->
+		<!-- <generator class="guid"/> -->
+		
+	<!-- 	<generator class="select">
+			<param name="key">prodname</param>
+		</generator> -->
+		
+<!-- 		<generator class="com.tushar.generators.CustomGenerator"/> -->
+		
 		</id>
-		<property name="prodname" column="PNAME" />
+		<property name="prodname" column="PNAME"  />
 		<property name="price" column="PRICE" />
 		<property name="status" column="STATUS" />
 		<property name="qty" column="QTY" />
