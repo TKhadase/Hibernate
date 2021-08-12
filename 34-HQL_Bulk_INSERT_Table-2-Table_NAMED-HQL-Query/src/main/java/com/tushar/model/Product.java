@@ -17,20 +17,26 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @RequiredArgsConstructor
 //@Table(name="UID_PRODUCT_TEST")
-@NamedQueries(  
+/*//Upto JAVA7, repeatable annotation not allowed, so use: @NamedQueries  
+ * @NamedQueries(  
 	    {  
 	        @NamedQuery(  
 	        name = "data_transfer_Product_ProductBKP",  
 	        query = "INSERT  INTO PROD_BKP(PID, prodname, price, status, qty)  SELECT  p.PID,  p.prodname, p.price, p.status, p.qty FROM Product p WHERE p.status = ?1"  
 	        )  
 	    }  
-	)  
+	)  */
 
 /*in XML mapping after class tag closing:
 	<query name="data_transfer_Product_ProductBKP">
 		<![CDATA[INSERT  INTO PROD_BKP(PID, prodname, price, status, qty)  SELECT  p.PID,  p.prodname, p.price, p.status, p.qty FROM Product p WHERE p.status = ?1]]>
 	</querty>
 */
+
+
+@NamedQuery(name = "data_transfer_Product_ProductBKP",  
+								query = "INSERT  INTO PROD_BKP(PID, prodname, price, status, qty)  SELECT  p.PID,  p.prodname, p.price, p.status, p.qty FROM Product p WHERE p.status = ?1"  )
+
 
 public final class Product  {
 	
