@@ -2,6 +2,7 @@ package com.tushar.main;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import javax.persistence.Query;
 
@@ -87,7 +88,7 @@ public class DDL_CRUD_Test {
 			// execute
 			int count5 = (int) query5.getSingleResult();
 			System.out.println("PRODUCT count:" + count5);
-
+			
 			System.out.println("---------------------SELECT <AGGREGATE VALUES>---addScalar(-,TYPE)---Object[]----getSingleResult-------------");
 			NativeQuery query6 = ses.createNativeQuery("SELECT COUNT(*), MAX(PID), MIN(PID), SUM(PID), AVG(PID)  FROM PRODUCT");
 			// register each column name
@@ -103,6 +104,33 @@ public class DDL_CRUD_Test {
 			System.out.println("MIN :: "+aggregateData[2]);
 			System.out.println("SUM :: "+aggregateData[3]);
 			System.out.println("AVG :: "+aggregateData[4]);
+			
+			System.out.println("--------------------UPDATE----------executeUpdate----------");
+			NativeQuery query7 = ses.createNativeQuery("UPDATE PRODUCT SET PID=(SELECT MAX(PID)+1 FROM PRODUCT) WHERE PID=?");
+			query7.setParameter(1, 67);
+			int iUpdate =query7.executeUpdate();
+			System.out.println(iUpdate+" record updated");
+			
+			System.out.println("--------------------INSERT-----------executeUpdate---------");
+			NativeQuery query8= ses.createNativeQuery("INSERT INTO PRODUCT (PID, PRODNAME,PRICE,STATUS,QTY) VALUES(?,?,?,?,?)");
+			query8.setParameter(1, new Random().nextInt(1000)); //pid
+			query8.setParameter(2, "abc"); //prodname
+			query8.setParameter(3, 11); //price
+			query8.setParameter(4, "A"); //status
+			query8.setParameter(5, 14); //qty
+			int iInsert =query8.executeUpdate();
+			System.out.println(iInsert+" record  inserted");
+			
+			System.out.println("--------------------DELETE-----------executeUpdate---------");
+			NativeQuery query9= ses.createNativeQuery("DELETE FROM PRODUCT  WHERE STATUS=?");
+			query9.setParameter(1, "11");
+			int iDELETE =query9.executeUpdate();
+			System.out.println(iDELETE+" record  deleted");
+			
+			System.out.println("--------------------CREATE-----------executeUpdate---------");
+			NativeQuery query10= ses.createNativeQuery("CREATE TABLE PRODUCT_BACKUP (PID number, PRODNAME varchar2(30),PRICE number, STATUS  varchar2(10),QTY number) ");
+			query10.executeUpdate();
+			System.out.println(" Table Created");
 
 			tX.commit();
 		} catch (HibernateException e) {
