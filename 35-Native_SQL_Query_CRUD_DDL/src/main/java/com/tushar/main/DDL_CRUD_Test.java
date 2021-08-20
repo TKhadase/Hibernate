@@ -21,7 +21,7 @@ public class DDL_CRUD_Test {
 
 	public static void main(String[] args) {
 
-		System.out.println("DDL_CRUD_Test.main() STARTED ");
+		System.out.println("DDL_CRUD_Test.main() STARTED");
 		Transaction tX = null;
 
 		try (SessionFactory factory = HBConnection_improved.getSessionFactory();
