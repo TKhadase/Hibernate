@@ -97,6 +97,13 @@ public class HB_Criteria_API_Test {
 				System.out.println();
 			});
 			
+			System.out.println("---------ENTITY-----------SELECT ALL--WITH CONDITION----eq------equals------------");
+			Criteria criteria9 = ses.createCriteria(Product.class);
+			Criterion cond9 =Restrictions.eq("prodname", "abc");
+			criteria9.add(cond9);
+			List<Product> prodList9 = criteria9.list();
+			prodList9.forEach(System.out::println);
+			
 			
 		} catch (HibernateException e) {
 			System.out.println("Error while performing operation");
