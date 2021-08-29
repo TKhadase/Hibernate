@@ -4,6 +4,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
   <groupId>Tushar</groupId>
   <artifactId>41-Pagination_HQL_JPQL</artifactId>
   <version>1.0</version>
+  
 <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>8</maven.compiler.source>
