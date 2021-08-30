@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.tushar.model.Person"  discriminator-value="per" table="INTPCH_Person">
+		<id name="PID">
+			<generator class="increment" />
+		</id>
+		<discriminator column="discriminatorvalue" type="string"/> 
+		<property name="fname"   />
+		<property name="lname"   />
+		<property name="addrs"   />
+		
+		<subclass name="com.tushar.model.Customer"   discriminator-value="cust">
+			<property name="billAmt"   />
+			<property name="billDate"   />
+			<property name="paymentType"   />
+			<property name="billingLocation"   />
+		</subclass>
+		
+		<subclass name="com.tushar.model.Employee"   discriminator-value="emp">
+			<property name="company"   />
+			<property name="desg"   />
+			<property name="salary"   />
+			<property name="experience"   />
+		</subclass>
+		
+	</class>
+</hibernate-mapping>
