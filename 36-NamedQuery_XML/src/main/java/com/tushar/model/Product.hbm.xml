@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.tushar.model.Product"  table="PRODUCT_DYNAMIC">
+		<id name="PID">
+			<generator class="increment" />
+		</id>
+		<property name="prodname" />
+		<property name="price" />
+		<property name="status" />
+		<property name="qty" />
+	</class>
+	<query name="HQL_GET_PRODUCT">
+		<![CDATA[  From Product  ]]>
+	</query>
+
+</hibernate-mapping>
