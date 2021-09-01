@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.tushar.model.Person" table="INTPSCH_Person">
+		<id name="PID">
+			<generator class="increment" />
+		</id>
+		<property name="fname"   />
+		<property name="lname"   />
+		<property name="addrs"   />
+		
+		<joined-subclass name="com.tushar.model.Customer" table="INTPSCH_Customer"  >
+			<key column="PERSON_ID"/>
+			<property name="billAmt"   />
+			<property name="billDate"   />
+			<property name="paymentType"   />
+			<property name="billingLocation"   />
+		</joined-subclass>
+		
+		<joined-subclass name="com.tushar.model.Employee"   table="INTPSCH_Employee" >
+		<key column="PERSON_ID"/>
+			<property name="company"   />
+			<property name="desg"   />
+			<property name="salary"   />
+			<property name="experience"   />
+	</joined-subclass>
+		
+	</class>
+</hibernate-mapping>
