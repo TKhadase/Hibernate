@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.tushar.model.Person" table="INTPCC_Person"  >
+		<id name="PID">
+			<generator class="increment" />
+		</id>
+		<property name="fname" />
+		<property name="lname" />
+		<property name="addrs" />
+
+		<union-subclass name="com.tushar.model.Customer" table="INTPCC_Customer" >
+			<property name="billAmt" />
+			<property name="billDate" />
+			<property name="paymentType" />
+			<property name="billingLocation" />
+		</union-subclass>
+
+	<union-subclass  name="com.tushar.model.Employee" 	table="INTPCC_Employee" >
+			<property name="company" />
+			<property name="desg" />
+			<property name="salary" />
+			<property name="experience" />
+	</union-subclass>
+
+	</class>
+</hibernate-mapping>
