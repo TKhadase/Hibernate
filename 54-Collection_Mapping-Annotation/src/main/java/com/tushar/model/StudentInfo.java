@@ -80,7 +80,7 @@ public  class StudentInfo implements Serializable {
 	@Override
 	public String toString() {
 		return "StudentInfo [SID=" + SID + ", fname=" + fname + ", lname=" + lname + ", addrs=" + addrs + ", frnds="
-				+ frnds + ", phones=" + phones + ", idDetails=" + idDetails + "]";
+				+ frnds + ", cities=" + cities + ", phones=" + phones + ", idDetails=" + idDetails + "]";
 	}
 
 }

@@ -23,7 +23,7 @@ public class Test {
 
 			tx =ses.beginTransaction();
 			System.out.println("**************************Test STARTED **************************");	
-			/*	StudentInfo s1 = new StudentInfo("Tushar", "Khadse", "YTL",
+			StudentInfo s1 = new StudentInfo("Tushar", "Khadse", "YTL",
 																					List.of("ABCD", "PQR", "XYZ"),
 																					Set.of("1234", "5678", "9012"),
 																					Map.of("ADHAR", "147896325", "PAN","JHASJ57") );
@@ -31,7 +31,7 @@ public class Test {
 				int s1id = (int)ses.save(s1);
 			
 				tx.commit();
-				System.out.println("StudentInfo  saved with IDNo#"+s1id);*/
+				System.out.println("StudentInfo  saved with IDNo#"+s1id);
 			
 			Query query1 = ses.createQuery("from StudentInfo");
 			List<StudentInfo> student = query1.getResultList();
