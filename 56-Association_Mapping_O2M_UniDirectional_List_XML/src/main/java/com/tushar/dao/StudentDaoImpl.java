@@ -152,7 +152,7 @@ public class StudentDaoImpl implements IStudentDao {
 	}// removePhoneInfo
 	
 	@Override
-	public void removeSpecificPhoneInfo(int sid, int pid) {
+	public void removeSpecificPhoneInfo(int sid, int pid, int pIndex) {
 		Transaction tx = null;
 		try (Session ses = HBConnection_improved.getSession();) {
 
@@ -164,9 +164,9 @@ public class StudentDaoImpl implements IStudentDao {
 			if (student != null) {
 				List<Phones> phones = student.getPhones();
 				Phones phone2Delete =  ses.get(Phones.class, pid);
-				
+		
 				if(phone2Delete  != null) {
-				phones.remove(phone2Delete);
+				phones.remove(pIndex);
 				tx.commit();
 				System.out.println(sid+">child> "+pid+" DELETE completed");
 				}else {

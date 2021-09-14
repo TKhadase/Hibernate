@@ -19,7 +19,7 @@ public class Test {
 		dao.removePhoneInfo(2);
 		dao.getStudentInfo();
 		
-		dao.removeSpecificPhoneInfo(3,6);
+		dao.removeSpecificPhoneInfo(3,6,0);
 		dao.getStudentInfo();
 		
 		dao.addSpecificPhoneInfo(3);
