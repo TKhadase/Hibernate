@@ -12,12 +12,16 @@ public class Test {
 		dao.saveStudentInfo();
 		dao.saveStudentInfo();
 		dao.getStudentInfo();
+		
 		dao.removeStudentAndPhoneInfo(1);
 		dao.getStudentInfo();
+		
 		dao.removePhoneInfo(2);
 		dao.getStudentInfo();
+		
 		dao.removeSpecificPhoneInfo(3,6);
 		dao.getStudentInfo();
+		
 		dao.addSpecificPhoneInfo(3);
 		dao.getStudentInfo();
 		
