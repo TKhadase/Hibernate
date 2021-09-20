@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.tushar.model.StudentInfo" table="ASSO_MAP_BD_STUDENTINFO">
+		<id name="SID">
+			<generator class="increment" />
+		</id>
+		<property name="fname"   />
+		<property name="lname"   />
+		<property name="addrs"   />
+		
+		<set name="phones"  cascade="all-delete-orphan" lazy="true" inverse="true">
+		 	<key column="SID"/>
+			<one-to-many  class="com.tushar.model.Phones"/>
+		</set>
+		
+	</class>
+</hibernate-mapping>
