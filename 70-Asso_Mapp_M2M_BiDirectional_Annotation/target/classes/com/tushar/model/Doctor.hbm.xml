@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.tushar.model.Doctor" table="MTM_BD_DOCTOR">
+		<id name="DID">
+			<generator class="increment" />
+		</id>
+		<property name="name"   />
+		<property name="experience"   />
+		<property name="specialist"   />
+		
+		<set name="patients" cascade="all" lazy="extra" inverse="true"  table="MTM_BD_DOCTOR_PATIENT">
+			<key   column="DOCTOR_ID"/>
+			<many-to-many   class="com.tushar.model.Patients"  column="PATIENT_ID"/> 
+		</set>
+		
+	</class>
+</hibernate-mapping>
