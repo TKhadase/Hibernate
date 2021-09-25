@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.tushar.model.Phones" table="ASOMAP_BD_SPHONE">
+		<id name="PID">
+			<generator class="increment" />
+		</id>
+		<property name="provider"   />
+		<property name="num"   />
+		<property name="phoneType"   />
+		<many-to-one name="student"  class="com.tushar.model.StudentInfo" cascade="all" column="studentInfo"  lazy="proxy"/>
+	</class>
+</hibernate-mapping>
