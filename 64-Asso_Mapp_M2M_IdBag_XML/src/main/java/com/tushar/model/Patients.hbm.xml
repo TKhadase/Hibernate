@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.tushar.model.Patients" table="IDBAG_MTM_BD_PATIENTS">
+		<id name="SRID">
+			<generator class="increment" />
+		</id>
+		<property name="PID"   />
+		<property name="name"   />
+		<property name="disease"   />
+		<property name="visitdate"   />
+		
+		<idbag name="doctor" cascade="all" lazy="true"   table="IDBAG_MTM_BD_DOCTOR_PATIENT">
+			<collection-id type="int" column="indx">
+				<generator class="increment" />
+			</collection-id>
+			<key   column="PATIENT_ID"/>
+			<many-to-many   class="com.tushar.model.Doctor"  column="DOCTOR_ID"/> 
+		</idbag>
+		
+		
+	</class>
+</hibernate-mapping>
