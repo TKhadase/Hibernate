@@ -11,6 +11,7 @@ public class Test {
 		System.out.println("==============================================================");
 		dao.getInfo(id);
 		dao.saveRecordtoRecord(id);
+		
 		HBConnection_improved.closeSessionFactory();
 	}// main
 

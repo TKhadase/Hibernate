@@ -7,14 +7,14 @@
 <hibernate-configuration>
 	<session-factory>
 
-	<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
 		<property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
 		<property name="connection.username">system</property>
-		<!--	
+			<!--
 	 <property name="connection.driver_class">com.mysql.jdbc.Driver</property> 
 			<property name="connection.url">jdbc:mysql://localhost:3306/HIBERNATEDB</property> 
 			<property name="connection.username">root</property>
-			 -->
+		 -->
 		<property name="connection.password">tushar</property>
 
 		<property name="hbm2ddl.auto">update</property>
@@ -22,6 +22,7 @@
 		<property name="format_sql">false</property>
 
 		<mapping class="com.tushar.model.Person" />
+		<mapping class="com.tushar.model.Utkarsh" />
 		
 	</session-factory>
 </hibernate-configuration>
