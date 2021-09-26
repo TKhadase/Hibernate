@@ -22,7 +22,6 @@
 		<property name="format_sql">false</property>
 
 		<mapping class="com.tushar.model.Person" />
-		<mapping class="com.tushar.model.Utkarsh" />
 		
 	</session-factory>
 </hibernate-configuration>
