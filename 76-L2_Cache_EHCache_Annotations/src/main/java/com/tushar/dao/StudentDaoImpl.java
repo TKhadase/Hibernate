@@ -89,7 +89,7 @@ public class StudentDaoImpl implements IStudentDao {
 			list.forEach(student ->{
 				System.out.println("Student:: "+student);
 				System.out.println("Library:: "+student.getLibrary());
-			});*/
+			}); */
 			
 			int  id=207;
 			StudentInfo s1 = ses.get(StudentInfo.class, id);
