@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.tushar.model.Library" table="O2O_BD_LIBRARY">
+		<cache usage="read-only"/>
+		<id name="MID">
+			<generator class="foreign">
+			<param name="property">student</param>
+			</generator>
+		</id>
+		<property name="type"   />
+		<property name="status"   />
+		<property name="doj"   />
+		<one-to-one name="student"  class="com.tushar.model.StudentInfo" cascade="all"   lazy="proxy"/>
+	</class>
+</hibernate-mapping>
