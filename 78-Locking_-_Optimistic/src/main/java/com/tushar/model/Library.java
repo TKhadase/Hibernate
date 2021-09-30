@@ -31,7 +31,7 @@ import lombok.Setter;
 @RequiredArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "ANNO_OTO_LIBRARY")
+@Table(name = "ANNO_OTO_LIBRARY_LOCK")
 @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Library {
 

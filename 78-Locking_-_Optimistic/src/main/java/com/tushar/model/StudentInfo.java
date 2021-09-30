@@ -28,7 +28,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Entity
-@Table(name = "ANNO_OTO_STUDENT")
+@Table(name = "ANNO_OTO_STUDENT_LOCK")
 @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public  class StudentInfo implements Serializable {
 	
@@ -43,6 +43,8 @@ public  class StudentInfo implements Serializable {
 	@NonNull	
 	private String addrs;
 	
+	@Version
+	private int ver;
 	
 	@OneToOne(targetEntity =Library.class, cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn(name = "MID", referencedColumnName = "SID")
@@ -53,9 +55,8 @@ public  class StudentInfo implements Serializable {
 
 	@Override
 	public String toString() {
-		return "StudentInfo [SID=" + SID + ", fname=" + fname + ", lname=" + lname + ", addrs=" + addrs + "]";
+		return "StudentInfo [SID=" + SID + ", fname=" + fname + ", lname=" + lname + ", addrs=" + addrs + ", ver=" + ver
+				+ ", library=" + library + "]";
 	}
-
-	
 
 }

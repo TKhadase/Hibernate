@@ -136,7 +136,7 @@ public class StudentDaoImpl implements IStudentDao {
 		Transaction tx=null;
 		try(Session ses = HBConnection_improved.getSession()) {
 			
-			int  id=208;
+			int  id=317;
 			StudentInfo s1 = ses.get(StudentInfo.class, id);
 			System.out.println("updateStudentInfo Read from DB:: Student s1:: "+s1);
 			tx =ses.beginTransaction();
@@ -165,7 +165,7 @@ public class StudentDaoImpl implements IStudentDao {
 		Transaction tx=null;
 		try(Session ses = HBConnection_improved.getSession()) {
 			
-			int  id=208;
+			int  id=317;
 			StudentInfo s1 = ses.get(StudentInfo.class, id);
 			System.out.println("updateStudentInfo1 Read from DB:: Student s1:: "+s1);
 			tx =ses.beginTransaction();
